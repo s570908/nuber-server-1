@@ -6,6 +6,9 @@
   "author": "kko0831 <kko0831@hanmail.net>",
   "license": "MIT",
   "devDependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/helmet": "^0.0.47",
+    "@types/morgan": "^1.9.0",
     "@types/node": "^14.0.5",
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.1",
@@ -14,5 +17,12 @@
   },
   "scripts": {
     "dev": "cd src && nodemon --exec ts-node index.ts -e ts,graphql"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "graphql-yoga": "^1.18.3",
+    "helmet": "^3.22.0",
+    "morgan": "^1.10.0",
+    "tslint": "^6.1.2"
   }
 }
