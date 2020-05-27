@@ -1,15 +1,18 @@
+import dotenv from "dotenv";
+dotenv.config();
 import { ConnectionOptions } from "typeorm";
+const { DB_ENDPOINT, DB_USERNAME, DB_PASSWORD, DB_NAME } = process.env;
 
 const ConnectionOptions: ConnectionOptions = {
   type: "postgres",
-  database: "nuber",
+  database: DB_NAME,
   synchronize: true,
   logging: true,
   entities: ["entities/**/*.*"],
-  host: process.env.DB_ENDPOINT || "localhost",
+  host: DB_ENDPOINT,
   port: 5432,
-  username: process.env.DB_USERNAME || "tamm",
-  password: process.env.DB_PASSWORD || "",
+  username: DB_USERNAME,
+  password: DB_PASSWORD,
 };
 
 export default ConnectionOptions;
