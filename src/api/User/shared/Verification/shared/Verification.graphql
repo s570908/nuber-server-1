@@ -1,0 +1,20 @@
+type Verification {
+  id: Int!
+  target: String!
+  payload: String!
+  key: String!
+  used: Boolean!
+  createAt: String!
+  updateAt: String #updateAt은 없을 수 있기 때문에 필수가 아니다.
+}
+
+# v = Verification
+# v.target = phone
+# v.payload = +24214242142
+# v.key = 3421
+
+# hello vrify with the number 3421
+
+# 3421
+
+# v(payload: +24214242142, key: 3421)
