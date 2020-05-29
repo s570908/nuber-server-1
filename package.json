@@ -6,6 +6,7 @@
   "author": "kko0831 <kko0831@hanmail.net>",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/cors": "^2.8.6",
     "@types/helmet": "^0.0.47",
     "@types/morgan": "^1.9.0",
@@ -25,6 +26,7 @@
     "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts"
   },
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "class-validator": "^0.12.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
