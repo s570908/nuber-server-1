@@ -1,12 +1,16 @@
 import { verificationTarget } from "src/types/types";
 import {
   BaseEntity,
+  BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+
+const PHONE = "PHONE";
+const EMAIL = "EMAIL";
 
 @Entity()
 class Verification extends BaseEntity {
@@ -26,6 +30,15 @@ class Verification extends BaseEntity {
 
   @CreateDateColumn() createAt: string;
   @UpdateDateColumn() updateAt: string;
+
+  @BeforeInsert()
+  createKey(): void {
+    if (this.target === PHONE) {
+      this.key = Math.floor(Math.random() * 10000).toString();
+    } else if (this.target === EMAIL) {
+      this.key = Math.random().toString(36).substr(2);
+    }
+  }
 }
 
 export default Verification;
