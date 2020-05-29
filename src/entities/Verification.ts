@@ -1,3 +1,4 @@
+import { verificationTarget } from "src/types/types";
 import {
   BaseEntity,
   Column,
@@ -11,8 +12,8 @@ import {
 class Verification extends BaseEntity {
   @PrimaryGeneratedColumn() id: number;
 
-  @Column({ type: "text" })
-  target: string;
+  @Column({ type: "text", enum: ["EMAIL", "PHONE"] })
+  target: verificationTarget;
 
   @Column({ type: "text" })
   payload: string;
