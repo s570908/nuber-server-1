@@ -1,3 +1,21 @@
+type Chat {
+  id: Int!
+  messages: [Message]!
+  participants: [User]!
+  createAt: String!
+  updateAt: String
+}
+
+type Message {
+  id: Int!
+  text: String!
+  chat: Chat!
+  user: User!
+  userId: Int!
+  createAt: String!
+  updateAt: String
+}
+
 type Place {
   id: Int!
   name: String!
@@ -39,6 +57,8 @@ type User {
   createAt: String!
   updateAt: String
   fullName: String
+  chat: Chat
+  messages: [Message]
   isDriving: Boolean!
   isRiding: Boolean!
   isTaken: Boolean!

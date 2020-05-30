@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import Message from "./Message"; // 임포트
+import User from "./User";
 
 @Entity()
 class Chat extends BaseEntity {
@@ -14,6 +15,9 @@ class Chat extends BaseEntity {
 
   @OneToMany((type) => Message, (message) => message.chat)
   messages: Message[];
+
+  @OneToMany((type) => User, (user) => user.chat)
+  participants: User[];
 
   @CreateDateColumn() createAt: string;
   @UpdateDateColumn() updateAt: string;
