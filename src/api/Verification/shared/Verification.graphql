@@ -4,6 +4,7 @@ type Verification {
   payload: String!
   key: String!
   used: Boolean!
+  user: User!
   createAt: String!
   updateAt: String #updateAt은 없을 수 있기 때문에 필수가 아니다.
 }
