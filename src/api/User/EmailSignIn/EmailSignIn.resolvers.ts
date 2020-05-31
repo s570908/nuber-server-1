@@ -9,20 +9,27 @@ const resolvers: Resolvers = {
       args: EmailSignInMutationArgs
     ): Promise<EmailSignInResponse> => {
       try {
-        const { email } = args;
-        const user = User.findOne({ email });
+        const { email, password } = args;
+        const user = await User.findOne({ email });
         if (!user) {
           return {
             ok: false,
             error: "No User found with that email",
             token: null,
           };
-        } else {
-          // 임시 리턴 값
+        }
+        const checkPassword = await user.comparePassword(password);
+        if (checkPassword) {
           return {
             ok: true,
-            error: "temp",
-            token: "",
+            error: null,
+            token: "Comming soon",
+          };
+        } else {
+          return {
+            ok: false,
+            error: "Wrong password",
+            token: null,
           };
         }
       } catch (error) {
