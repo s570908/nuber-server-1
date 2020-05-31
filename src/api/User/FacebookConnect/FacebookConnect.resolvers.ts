@@ -29,11 +29,14 @@ const resolvers: Resolvers = {
         };
       }
       try {
-        // 임시 리턴 값
+        await User.create({
+          ...args,
+          profilePhoto: `http://graph.facebook.com/${fbId}/picture?type=square'`,
+        }).save();
         return {
           ok: true,
           error: null,
-          token: null,
+          token: "Comming soon, create",
         };
       } catch (error) {
         return {
