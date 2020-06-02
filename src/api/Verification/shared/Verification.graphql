@@ -3,6 +3,7 @@ type Verification {
   target: String!
   payload: String!
   key: String!
+  verified: Boolean!
   createAt: String!
   updateAt: String #updateAt은 없을 수 있기 때문에 필수가 아니다.
 }
