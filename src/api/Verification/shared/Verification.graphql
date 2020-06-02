@@ -11,10 +11,10 @@ type Verification {
 # v = Verification
 # v.target = phone
 # v.payload = +24214242142
-# v.key = 3421
+# v.key = 5535
 
-# hello vrify with the number 3421
+# hello verify with the number 5535
 
-# 3421
+# 5535
 
-# v(payload: +24214242142, key: 3421)
+# v(payload: +24214242142, key: 5535)
