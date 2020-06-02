@@ -3,8 +3,8 @@ import {
   FacebookConnectResponse,
 } from "src/types/graph";
 import { Resolvers } from "src/types/resolvers";
-import createJWT from "../../../utils/createJWT";
 import User from "../../../entities/User"; // 이건 꼭 상대경로로 해야 찾을 수 있다.
+import createJWT from "../../../utils/createJWT";
 
 const resolvers: Resolvers = {
   Mutation: {
