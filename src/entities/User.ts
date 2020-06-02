@@ -33,7 +33,7 @@ class User extends BaseEntity {
   firstName: string;
 
   @Column({ type: "text" })
-  lasttName: string;
+  lastName: string;
 
   @Column({ type: "int", nullable: true })
   age: number;
@@ -88,7 +88,7 @@ class User extends BaseEntity {
   }
 
   get fullName(): string {
-    return `${this.firstName} ${this.lasttName}`;
+    return `${this.firstName} ${this.lastName}`;
   }
 
   @CreateDateColumn() createAt: string;

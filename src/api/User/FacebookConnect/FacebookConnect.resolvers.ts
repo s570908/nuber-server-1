@@ -3,6 +3,7 @@ import {
   FacebookConnectResponse,
 } from "src/types/graph";
 import { Resolvers } from "src/types/resolvers";
+import createJWT from "../../../utils/createJWT";
 import User from "../../../entities/User"; // 이건 꼭 상대경로로 해야 찾을 수 있다.
 
 const resolvers: Resolvers = {
@@ -13,12 +14,13 @@ const resolvers: Resolvers = {
     ): Promise<FacebookConnectResponse> => {
       const { fbId } = args;
       try {
-        const exitingUser = User.findOne({ fbId });
+        const exitingUser = await User.findOne({ fbId });
         if (exitingUser) {
+          const token = createJWT(exitingUser.id);
           return {
             ok: true,
             error: null,
-            token: "Coming soon, already",
+            token,
           };
         }
       } catch (error) {
@@ -29,14 +31,15 @@ const resolvers: Resolvers = {
         };
       }
       try {
-        await User.create({
+        const user = await User.create({
           ...args,
           profilePhoto: `http://graph.facebook.com/${fbId}/picture?type=square'`,
         }).save();
+        const token = createJWT(user.id);
         return {
           ok: true,
           error: null,
-          token: "Coming soon, created",
+          token,
         };
       } catch (error) {
         return {
