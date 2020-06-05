@@ -4,13 +4,13 @@ import Mailgun from "mailgun-js";
 
 const mailGunClient = new Mailgun({
   apiKey: process.env.MAILGUN_API_KEY || "",
-  domain: "sandbox8887722127a442c5ac0167de6a1d502c.mailgun.org",
+  domain: "sandbox0a6c0c68732848c09e0b25b1128e0c6b.mailgun.org",
 });
 
 const sendEmail = (subject: string, html: string) => {
   const emailData = {
-    from: "2130231401@naver.com", // 본인의 이메일로 변경
-    to: "2130231401@naver.com", // 본인의 이메일로 변경
+    from: "kko0831@hanmail.net", // 본인의 이메일로 변경
+    to: "kko0831@hanmail.net", // 본인의 이메일로 변경
     subject,
     html,
   };
