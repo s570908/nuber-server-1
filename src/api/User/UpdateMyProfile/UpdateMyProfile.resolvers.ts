@@ -8,10 +8,10 @@ const resolvers: Resolvers = {
     UpdateMyProfile: privateResolver(async (_, args, { req }) => {
       const user: User = req.user;
       const notNull: any = cleanNullArgs(args);
-      if (notNull.hasOwnProperty("password")) {
-        user.password = notNull["password"];
+      if (notNull.password) {
+        user.password = notNull.password;
         user.save();
-        delete notNull["password"];
+        delete notNull.password;
       }
 
       try {
