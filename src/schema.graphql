@@ -65,7 +65,7 @@ type Message {
   chat: Chat!
   chatId: Int
   user: User!
-  userId: Int!
+  userId: Int
   createAt: String!
   updateAt: String
 }
@@ -134,7 +134,7 @@ type Ride {
   price: Float!
   driver: User
   driverId: Int
-  passenger: User
+  passenger: User!
   passengerId: Int
   chat: Chat
   chatId: Int

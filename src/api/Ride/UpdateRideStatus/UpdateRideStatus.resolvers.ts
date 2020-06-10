@@ -41,15 +41,25 @@ const resolvers: Resolvers = {
                 ride.save();
               }
             } else {
-              ride = await Ride.findOne({
-                id: args.rideId,
-                driver: user,
-              });
+              ride = await Ride.findOne(
+                {
+                  id: args.rideId,
+                  driver: user,
+                },
+                { relations: ["passenger", "driver"] }
+              );
             }
             if (ride) {
               ride.status = args.status;
               ride.save();
               pubSub.publish("rideUpdate", { RideStatusSubscription: ride });
+              if (args.status === "FINISHED") {
+                await User.update({ id: ride.driverId }, { isTaken: false });
+                await User.update(
+                  { id: ride.passengerId },
+                  { isRiding: false }
+                );
+              }
               return {
                 ok: true,
                 error: null,
